@@ -5,6 +5,7 @@ def gen():
 
 if __name__ == '__main__':
 	x = gen()
-	print(x.next())
+	for i in x:
+		print(i)
 	
 	
