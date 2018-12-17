@@ -16,5 +16,7 @@ def quickSort(array):
 
 if __name__ == '__main__':
 	array = [4, 5, 8, 0, 1, 4, 6, 7, 10, 45, 3, -2, -8]
+	print("\033[0;31m%s\033[0m" % "Before the sort: ")
+	print(array)
+	print("\033[0;31m%s\033[0m" % "After quicksort:")
 	print(quickSort(array))
-
