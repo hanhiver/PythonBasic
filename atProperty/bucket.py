@@ -28,4 +28,6 @@ def deduct(bucket, amount):
 	bucket.quota -= amount
 	return True 
 
-
+bucket = Bucket(60)
+fill(bucket, 100)
+print(bucket)
