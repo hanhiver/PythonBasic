@@ -45,7 +45,8 @@ for i in range(10):
 # Get result from the result queue. 
 print('Try get results...')
 for i in range(10):
-	r = result.get(timeout = 10)
+	#r = result.get(timeout = 10)
+	r = result.get()
 	print('Result: {}'.format(r))
 
 # Shutdown the queues. 
