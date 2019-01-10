@@ -22,6 +22,10 @@ if __name__ == '__main__':
 								initializer = start_process)
 
 	pool_outputs = pool.map(do_caculate, inputs)
+
+	res = pool.apply_async(do_caculate, (9, ))
+	print(res.get())
+
 	pool.close()
 	pool.join()
 
