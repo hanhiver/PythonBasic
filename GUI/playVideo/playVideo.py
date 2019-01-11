@@ -8,6 +8,8 @@ import time
 
 from multiprocessing import Process, Queue
 from threading import Thread
+
+import mjpeg_stream 
 #import queue
 
 class MainWindow(object):
