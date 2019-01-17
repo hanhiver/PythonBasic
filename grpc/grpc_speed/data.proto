@@ -1,7 +1,7 @@
 syntax = "proto3";
-package example;
-service FormatData {
-  rpc DoFormat(Data) returns (Data){}
+package ImagePredict;
+service DnetPredict {
+  rpc dnet_detect(Data) returns (Data){}
 }
 message Data {
   string text = 1;

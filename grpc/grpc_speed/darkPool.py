@@ -11,6 +11,12 @@ import data_pb2, data_pb2_grpc
 import pickle, base64
 from concurrent import futures
 
+_ONE_DAY_IN_SECONDS = 60 * 60 * 24
+_HOST = 'localhost'
+_PORT = '18500'
+
+_SERVER_SEND_MSG_SIZE = 40000000
+_SERVER_RECV_MSG_SIZE = 40000000
 
 #####################
 # Server part code. #
@@ -39,9 +45,6 @@ Return:
 '''
 def feedImage(my_input):
     #print('WORKOR: {}, start to predict Image.'.format(os.getpid()))
-    start = time()
-    sleep(1)
-    print('WORKOR: {}, complet a task in {:.5f} seconds.'.format(os.getpid(), time() - start))
     return my_input
 
 
@@ -58,8 +61,8 @@ class ServerProcessPool(object):
         self.pool.close()
         self.pool.join()
 
-    def predictImage(self, image):
-        res = self.pool.apply_async(feedImage, (image, ))
+    def predictImage(self, my_input):
+        res = self.pool.apply_async(feedImage, (my_input, ))
         return res 
 
 '''
@@ -74,12 +77,19 @@ class DnetPredict(data_pb2_grpc.DnetPredictServicer):
         start = time()
 
         str = request.text
-        image = base64.b64decode(str)
-        image = pickle.loads(image)        
-        return_queue = self.model_pool.predictImage(image)
-        result = return_queue.get()
+        pickle_str = base64.b64decode(str)
+        image_encode = pickle.loads(pickle_str)
+        image = cv2.imdecode(image_encode, cv2.IMREAD_COLOR)
+
+        result = image   
+
+        #return_queue = self.model_pool.predictImage(image)
+        #result = return_queue.get()
+        
         result = pickle.dumps(result)
         result = base64.b64encode(result)
+        
+        sleep(1)
 
         #print('WORKOR: {} done one image in: {}'.format(os.getpid(), time() - start))
         
@@ -95,7 +105,7 @@ port:
 model_pool_size: 
     how many process in the server pool to provide model service. 
 '''
-def startServer(port = _PORT, 
+def startServer(port = '18501', 
                 model_pool_size = 1,
                 send_msg_size = _SERVER_SEND_MSG_SIZE, 
                 recv_msg_size = _SERVER_RECV_MSG_SIZE):
