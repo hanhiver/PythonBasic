@@ -24,7 +24,6 @@ Using the multiprocessing model to start moder server.
 Model Initialization. 
 '''
 def initialModel():
-    dnet.initModel()
     print('WORKOR: {}, model initialed. '.format(os.getpid()))
 
 
@@ -38,12 +37,12 @@ Return:
     Queue of model output. Use .get() to get the model output. 
 
 '''
-def feedImage(image):
+def feedImage(my_input):
     #print('WORKOR: {}, start to predict Image.'.format(os.getpid()))
     start = time()
-    model_out = dnet.dnet_detect_image(dnet.netMain, dnet.metaMain, image, thresh=.2)
+    sleep(1)
     print('WORKOR: {}, complet a task in {:.5f} seconds.'.format(os.getpid(), time() - start))
-    return model_out
+    return my_input
 
 
 '''
