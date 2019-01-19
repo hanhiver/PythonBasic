@@ -1,58 +1,51 @@
 import multiprocessing
+import threading
 import os, time, random
 
 class MyProcess(multiprocessing.Process):
 	def __init__(self, func, args):
-		super().__init__(self)
+		multiprocessing.Process.__init__(self)
 		self.result = func(*args)
 
-
-def long_time_task(name):
-	print('Run task {} ({})...'.format(name, os.getpid()))
+def long_time_task(value):
+	print('Run task {} ({})...'.format(value, os.getpid()))
 	start = time.time()
 	time.sleep(1)
+	result = (value + 1) * random.random()
 	end = time.time()
-	print('Task {} run {:.4f} seconds.'.format(name, (end - start)))
+	print('Task {} run {:.4f} seconds.'.format(os.getpid(), (end - start)))
+	return result
+
+def get_result(pool, args):
+	result_queue = pool.apply_async(long_time_task, args)
+	result = result_queue.get()
+	return result
 
 def main1():
 	start = time.time()
 
 	print('Parent process {}.'.format(os.getpid()))
 
-	process_list = []
+	pool = multiprocessing.Pool(4)
 
-	for i in range(4):
-		p = MyProcess(func = long_time_task, args = (str(i), ))
-		process_list.append(p)
+	thread_list = []
 
-	for p in process_list:
-		p.start()
-		print('Result = ', p.result)
-	
-	print('Waiting for all child processes done...')
+	for i in range(8):
+		t = threading.Thread(target = get_result, args = (pool, (i, )))
+		thread_list.append(t)
 
-	p.close()
-	p.join()
+	for t in thread_list:
+		t.start()
 
-	print('All child processes done in {:.4f} seconds.'.format(time.time() - start))
+	for t in thread_list:
+		t.join()
 
-def main2():
-	start = time.time()
 
-	print('Parent process {}.'.format(os.getpid()))
-
-	p = multiprocessing.Pool(4)
-	#p = Pool()
-
-	for i in range(10):
-		p.apply_async(long_time_task, args=(i, ))
-
-	print('Waiting for all child processes done...')
-
-	p.close()
-	p.join()
+	pool.close()
+	pool.join()
 
 	print('All child processes done in {:.4f} seconds.'.format(time.time() - start))
+
 
 if __name__ == '__main__':
 	main1()
