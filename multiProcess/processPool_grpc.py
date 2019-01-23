@@ -2,6 +2,13 @@ import multiprocessing
 import threading
 import os, time, random
 
+_MAX_PROCESSES_PER_GPU = 6
+
+def process_init(pool_info, lock):
+	print('Task: {} initialed.'.format(os.getpid()))
+	pool_info['PROCESS_LIST'].append(os.getpid())
+	print('Task: {} pool_info: {} \n\t Process List: {} \n\t GPU Affinity: {}'.format(os.getpid(), pool_info, pool_info['PROCESS_LIST'], pool_info['GPU_AFFINITY']))
+
 def real_task(value):
 	print('Run task {} ({})...'.format(value, os.getpid()))
 	start = time.time()
@@ -14,7 +21,37 @@ def real_task(value):
 class MyProcessPool(object):
 	def __init__(self, pool_size = 1):
 		self.pool_size = pool_size
-		self.pool = multiprocessing.Pool(self.pool_size)
+
+		self.lock = multiprocessing.Lock()
+
+		self.lock.acquire()
+
+		with os.popen('nvidia-smi -L | grep GPU | wc -l') as command_pipe:
+			gpu_number = command_pipe.read()
+			gpu_number = int(gpu_number)
+			print('GPU NUMBER:', gpu_number)
+
+		self.manager = multiprocessing.Manager()
+		self.pool_info = self.manager.dict()
+		self.process_list = self.manager.list()
+		self.gpu_affinity = self.manager.list()
+
+		self.pool_info['GPU_NUMBER'] = gpu_number
+		self.pool_info['MAX_PROCESSES_PER_GPU'] = _MAX_PROCESSES_PER_GPU
+		self.pool_info['GPU_AFFINITY'] = self.gpu_affinity
+
+		for i in range(4):
+			self.gpu_affinity.append(0)
+		
+		self.pool_info['PROCESS_LIST'] = self.process_list
+
+		print('Main Process Initialized. ')
+
+		self.lock.release()
+
+		self.pool = multiprocessing.Pool(processes = self.pool_size, 
+										 initializer = process_init,
+										 initargs = (self.pool_info, self.lock, ))
 	
 	def __del__(self):
 		self.pool.close()
