@@ -11,6 +11,7 @@ def run(info_dict, info_list, lock):
 	#info_list.append(os.getpid())
 	print('WORK: {} DICT: '.format(os.getpid()), info_dict)
 	print('WORK: {} LIST: '.format(os.getpid()), info_list)
+	print('WORK: {} MIN: '.format(os.getpid()), info_list.index(min(info_list)))
 	#lock.release()
 
 def main():
