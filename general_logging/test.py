@@ -4,6 +4,8 @@ import multiprocessing
 
 import loggerManager
 
+import time
+
 logger_manager = None
 
 def write_log():
@@ -20,10 +22,11 @@ def main():
 
 	logger = logger_manager.get_logger('main')
 
-	p = multiprocessing.Pool(12)
+	p = multiprocessing.Pool(50)
 
-	for i in range(100):
+	for i in range(10000):
 		p.apply_async(write_log)
+		time.sleep(0.001)
 
 	p.close()
 	p.join()
