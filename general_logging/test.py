@@ -20,9 +20,9 @@ def main():
 
 	logger = logger_manager.get_logger('main')
 
-	p = multiprocessing.Pool(12)
+	p = multiprocessing.Pool(16)
 
-	for i in range(100):
+	for i in range(1000000):
 		p.apply_async(write_log)
 
 	p.close()
