@@ -9,10 +9,27 @@ logger_manager = None
 def write_log():
 	global logger_manager
 	logger = logger_manager.get_logger('write_log')
-	logger.debug('A DEBUG infomation in thread. ')
-	logger.info('A INFO information in thread. ')
+	logger.debug('A DEBUG infomation in thread. A DEBUG infomation in thread. A DEBUG infomation in thread.')
+	#logger.info('A INFO information in thread. ')
 
 def main():
+	global logger_manager
+
+	#log_filename = sys.argv[0].split('.')[0] + '.log'
+	logger_manager = loggerManager.LoggerManager(log_format = '%(message)s')
+
+	logger = logger_manager.get_logger('main')
+
+	p = multiprocessing.Pool(12)
+
+	for i in range(100):
+		p.apply_async(write_log)
+
+	p.close()
+	p.join()
+
+
+def main1():
 	global logger_manager
 
 	#log_filename = sys.argv[0].split('.')[0] + '.log'
