@@ -38,9 +38,9 @@ class LoggerManager():
 		system will delete them automatically.  
 	"""
 	def __init__(self, filename = None, 
-				 log_level = logging.DEBUG, 
-				 max_bytes = 50000000, 
-				 backup_count = 5,
+				 log_level = logging.DEBUG, # Default log level is DEBUG
+				 max_bytes = 50000000, # 50MB Log file by default. 
+				 backup_count = 5, # Save 5 log files by default. 
 				 log_format = None):
 
 		self.log_level = log_level
