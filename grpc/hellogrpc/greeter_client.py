@@ -27,6 +27,10 @@ def run():
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
     #with grpc.insecure_channel('localhost:50051') as channel:
+<<<<<<< HEAD
+=======
+    #with grpc.insecure_channel('dliforsup:50051') as channel:
+>>>>>>> 1d851238f26d64796720a9370a202a20ae3aeb0a
     with grpc.insecure_channel('9.181.92.123:50051') as channel:
         stub = helloworld_pb2_grpc.GreeterStub(channel)
         response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))

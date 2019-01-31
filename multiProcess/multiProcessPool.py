@@ -9,6 +9,8 @@ def long_time_task(name):
 	print('Task {} run {:2f} seconds.'.format(name, (end - start)))
 
 if __name__ == '__main__':
+	start = time.time()
+
 	print('Parent process {}.'.format(os.getpid()))
 
 	p = Pool(4)
@@ -22,5 +24,5 @@ if __name__ == '__main__':
 	p.close()
 	p.join()
 
-	print('All child processes done. ')
+	print('All child processes done in {} seconds.'.format(time.time() - start))
 
