@@ -39,8 +39,9 @@ class LoggerManager():
 	"""
 	def __init__(self, filename = None, 
 				 log_level = logging.DEBUG, 
-				 max_bytes = 5000, 
-				 backup_count = 5):
+				 max_bytes = 50000000, 
+				 backup_count = 5,
+				 log_format = None):
 
 		self.log_level = log_level
 
@@ -55,7 +56,9 @@ class LoggerManager():
 
 		# Standard loging message format:
 		# time, log_level, <process_id:thread_name> - [module.func_name] log_messages. 
-		log_format = '%(asctime)s %(levelname)7s  <%(process)s:%(threadName)s> - [%(name)s.%(funcName)s] - %(filename)s[line:%(lineno)d] %(message)s'
+		if not log_format:
+			log_format = '%(asctime)s %(levelname)7s  <%(process)s:%(threadName)s> - [%(name)s.%(funcName)s] - %(filename)s[line:%(lineno)d] %(message)s'
+		
 		self.formatter = logging.Formatter(log_format)
 
 		# Queue handler to recieve msg from other processes. 
