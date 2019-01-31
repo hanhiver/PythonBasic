@@ -22,15 +22,9 @@ def main():
 
 	logger = logger_manager.get_logger('main')
 
-<<<<<<< HEAD
-	p = multiprocessing.Pool(50)
-
-	for i in range(10000):
-=======
 	p = multiprocessing.Pool(16)
 
 	for i in range(1000000):
->>>>>>> eacf81a498cfb43e9c0289e5fad90437e76fa8f1
 		p.apply_async(write_log)
 		time.sleep(0.001)
 
