@@ -45,10 +45,12 @@ class LoggerManager():
 
 		self.log_level = log_level
 
+		hostname = socket.gethostname().split('.')[0]
 		if not filename:
-			hostname = socket.gethostname()
-			filename = sys.argv[0].split('.')[0] + '.log.' + hostname
-			print('FILENAME: ', filename)
+			filename = sys.argv[0].split('.')[0]
+
+		# Add hostname as the suffix to log files.
+		filename = filename + '.log.' + hostname
 
 		# Add Manager.Queue() to hanlde the multi-processes communication. 
 		self.manager = multiprocessing.Manager()
