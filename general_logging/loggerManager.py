@@ -23,9 +23,7 @@ LOG_LEVELS = {
 }
 
 def get_level(level_name):
-	print(level_name)
 	level = LOG_LEVELS.get(level_name, logging.NOTSET)
-	print(level)
 	return level 
 
 ############################
