@@ -14,6 +14,19 @@ import socket
 
 import time
 
+LOG_LEVELS = {
+	'debug' : logging.DEBUG, 
+	'info' : logging.INFO, 
+	'warning' : logging.WARNING, 
+	'error' : logging.ERROR, 
+	'critical' : logging.CRITICAL,
+}
+
+def get_level(level_name):
+	print(level_name)
+	level = LOG_LEVELS.get(level_name, logging.NOTSET)
+	print(level)
+	return level 
 
 ############################
 ### Local Logging system ###
@@ -38,12 +51,12 @@ class LoggerManager():
 		system will delete them automatically.  
 	"""
 	def __init__(self, filename = None, 
-				 log_level = logging.DEBUG, # Default log level is DEBUG
+				 log_level = 'warning', # Default log level is DEBUG
 				 max_bytes = 50000000, # 50MB Log file by default. 
 				 backup_count = 5, # Save 5 log files by default. 
 				 log_format = None):
 
-		self.log_level = log_level
+		self.log_level = get_level(log_level)
 
 		hostname = socket.gethostname().split('.')[0]
 		if not filename:
