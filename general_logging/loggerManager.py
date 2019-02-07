@@ -22,6 +22,17 @@ LOG_LEVELS = {
 	'critical' : logging.CRITICAL,
 }
 
+"""
+Specify a keyword such like 'debug', the function automatically return logging leve. 
+If the keyword cannot found in LOG_LEVELS, simply return logging.NOSET. 
+
+level_name:
+	string of logging level. such like 'debug', 'info', etc. 
+
+return: 
+	return the official logging leve. such like logging.DEBUG, etc. 
+	if the string is not predefined, return logging.NOSET. 
+"""
 def get_level(level_name):
 	level = LOG_LEVELS.get(level_name, logging.NOTSET)
 	return level 
