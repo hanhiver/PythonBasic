@@ -4,6 +4,7 @@ import sched
 import queue
 import os
 
+mystr = 'aaa'
 
 class Test():
     def __init__(self):
@@ -57,12 +58,18 @@ class SchedRun():
         self.scheduler.run()
 
 def myinit():
-    print('Init func. ', os.getpid())
+    global mystr 
+
+    mystr = 'bbb'
+
+    print('Init func. ', os.getpid(), mystr)
 
 def myfunc(input_queue, timeout = 3):
+    global mystr 
+
     try:
         value = input_queue.get(timeout = timeout)
-        print('Doing my job: ', value, os.getpid())
+        print('Doing my job: ', value, os.getpid(), mystr)
         return True
     except queue.Empty:
         print('Queue empty.')
@@ -70,12 +77,17 @@ def myfunc(input_queue, timeout = 3):
 
 
 def main():
-    print('Main process: ', os.getpid())
+    global mystr
+
+    print('Main process: ', os.getpid(), mystr)
     my_queue = multiprocessing.Queue()
-    test = SchedRun(myfunc, my_queue, init_func = myinit)
+    test = SchedRun(myfunc, my_queue, init_func = myinit, interval = 1)
 
     for i in range(10):
         my_queue.put(i)
+
+    time.sleep(3)
+    print('Main process END: ', os.getpid(), mystr)
     
 if __name__ == '__main__':
     main()
