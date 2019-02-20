@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "hello",
+        "name": "main_args",
         "sources": [
-            "hello.py"
+            "main_args.py"
         ]
     },
-    "module_name": "hello"
+    "module_name": "main_args"
 }
 END: Cython Metadata */
 
@@ -614,8 +614,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__hello
-#define __PYX_HAVE_API__hello
+#define __PYX_HAVE__main_args
+#define __PYX_HAVE_API__main_args
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -824,7 +824,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "hello.py",
+  "main_args.py",
 };
 
 /*--- Type declarations ---*/
@@ -937,13 +937,6 @@ static CYTHON_INLINE int __Pyx_PyList_Extend(PyObject* L, PyObject* v) {
 #endif
 }
 
-/* PyCFunctionFastCall.proto */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
-#else
-#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
-#endif
-
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
 #define __Pyx_PyFunction_FastCall(func, args, nargs)\
@@ -974,16 +967,33 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
 
-/* PyObjectCall2Args.proto */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
-
 /* PyObjectCallMethO.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
 #endif
 
+/* PyObjectCallNoArg.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
+#else
+#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
+#endif
+
+/* PyCFunctionFastCall.proto */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
+#else
+#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
+#endif
+
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
+
+/* PySequenceContains.proto */
+static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
+    int result = PySequence_Contains(seq, item);
+    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
+}
 
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
@@ -1059,13 +1069,6 @@ static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int 
 #define __Pyx_PyString_Equals __Pyx_PyUnicode_Equals
 #else
 #define __Pyx_PyString_Equals __Pyx_PyBytes_Equals
-#endif
-
-/* PyObjectCallNoArg.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
-#else
-#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
 #endif
 
 /* PyThreadStateGet.proto */
@@ -1169,247 +1172,808 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'hello' */
-#define __Pyx_MODULE_NAME "hello"
-extern int __pyx_module_is_main_hello;
-int __pyx_module_is_main_hello = 0;
+/* Module declarations from 'main_args' */
+#define __Pyx_MODULE_NAME "main_args"
+extern int __pyx_module_is_main_main_args;
+int __pyx_module_is_main_main_args = 0;
 
-/* Implementation of 'hello' */
+/* Implementation of 'main_args' */
+static const char __pyx_k_i[] = "-i";
+static const char __pyx_k_l[] = "-l";
+static const char __pyx_k_m[] = "-m";
+static const char __pyx_k_n[] = "-n";
+static const char __pyx_k_o[] = "-o";
+static const char __pyx_k_p[] = "-p";
+static const char __pyx_k_r[] = "-r";
+static const char __pyx_k_s[] = "-s";
+static const char __pyx_k_t[] = "-t";
+static const char __pyx_k_u[] = "-u";
+static const char __pyx_k__5[] = "";
+static const char __pyx_k_lv[] = "-lv";
+static const char __pyx_k_mh[] = "-mh";
+static const char __pyx_k_mp[] = "-mp";
 static const char __pyx_k_end[] = "end";
 static const char __pyx_k_sys[] = "sys";
+static const char __pyx_k_tag[] = "--tag";
+static const char __pyx_k_url[] = "--url";
+static const char __pyx_k_Port[] = "Port:    ";
 static const char __pyx_k_argv[] = "argv";
-static const char __pyx_k_dhan[] = "dhan";
 static const char __pyx_k_file[] = "file";
+static const char __pyx_k_help[] = "help";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_port[] = "--port";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_hello[] = "hello";
+static const char __pyx_k_type[] = "type";
+static const char __pyx_k_FLAGS[] = "FLAGS";
+static const char __pyx_k_Input[] = "Input:   ";
+static const char __pyx_k_LView[] = "LView:   ";
+static const char __pyx_k_Mhost[] = "Mhost:   ";
+static const char __pyx_k_Mport[] = "Mport:   ";
+static const char __pyx_k_Rpath[] = "Rpath:   ";
+static const char __pyx_k_input[] = "--input";
+static const char __pyx_k_model[] = "--model";
 static const char __pyx_k_print[] = "print";
-static const char __pyx_k_format[] = "format";
+static const char __pyx_k_Output[] = "Output:  ";
+static const char __pyx_k_action[] = "action";
 static const char __pyx_k_import[] = "__import__";
-static const char __pyx_k_myname[] = "myname";
-static const char __pyx_k_name_2[] = "name";
+static const char __pyx_k_main_2[] = "main";
+static const char __pyx_k_output[] = "--output";
+static const char __pyx_k_parser[] = "parser";
+static const char __pyx_k_port_2[] = "port";
+static const char __pyx_k_CNumber[] = "CNumber: ";
 static const char __pyx_k_In_file[] = "In file: ";
-static const char __pyx_k_In_hello[] = "In hello: ";
-static const char __pyx_k_hello_py[] = "hello.py";
-static const char __pyx_k_In_myname[] = "In myname: ";
-static const char __pyx_k_My_name_is[] = "My name is: {}.";
-static const char __pyx_k_hello_Python_so[] = "hello! Python so.";
+static const char __pyx_k_In_main[] = "In main: ";
+static const char __pyx_k_Summary[] = "Summary: ";
+static const char __pyx_k_cnumber[] = "--cnumber";
+static const char __pyx_k_default[] = "default";
+static const char __pyx_k_input_2[] = "input";
+static const char __pyx_k_summary[] = "--summary";
+static const char __pyx_k_warning[] = "warning";
+static const char __pyx_k_argparse[] = "argparse";
+static const char __pyx_k_loglevel[] = "--loglevel";
+static const char __pyx_k_output_2[] = "output";
+static const char __pyx_k_test_mp4[] = "test.mp4";
+static const char __pyx_k_cnumber_2[] = "cnumber";
+static const char __pyx_k_localview[] = "--localview";
+static const char __pyx_k_main_args[] = "main_args";
+static const char __pyx_k_modelhost[] = "--modelhost";
+static const char __pyx_k_modelport[] = "--modelport";
+static const char __pyx_k_summary_2[] = "summary";
+static const char __pyx_k_parse_args[] = "parse_args";
+static const char __pyx_k_recordpath[] = "--recordpath";
+static const char __pyx_k_store_true[] = "store_true";
+static const char __pyx_k_localview_2[] = "localview";
+static const char __pyx_k_modelhost_2[] = "modelhost";
+static const char __pyx_k_modelport_2[] = "modelport";
+static const char __pyx_k_add_argument[] = "add_argument";
+static const char __pyx_k_main_args_py[] = "main_args.py";
+static const char __pyx_k_recordpath_2[] = "recordpath";
+static const char __pyx_k_ArgumentParser[] = "ArgumentParser";
+static const char __pyx_k_localhost_8500[] = "localhost:8500";
+static const char __pyx_k_high_way_detector[] = "high_way_detector";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_See_usage_with_help[] = "See usage with --help.";
+static const char __pyx_k_Optional_Output_video[] = "[Optional] Output video. ";
+static const char __pyx_k_Input_video_DEFAULT_test_mp4[] = "Input video. DEFAULT: test.mp4 ";
+static const char __pyx_k_Optional_Camera_ID_set_by_GUI[] = "[Optional] Camera ID (set by GUI). ";
+static const char __pyx_k_Optional_Folder_to_save_the_rec[] = "[Optional] Folder to save the record of incident. ";
+static const char __pyx_k_Optional_Host_of_the_model_serv[] = "[Optional] Host of the model server. ";
+static const char __pyx_k_Optional_If_shows_result_to_loc[] = "[Optional] If shows result to local view. ";
+static const char __pyx_k_Optional_Log_level_WARNING_is_d[] = "[Optional] Log level. WARNING is default. ";
+static const char __pyx_k_Optional_Log_the_fps_informatio[] = "[Optional] Log the fps information. ";
+static const char __pyx_k_Optional_Port_number_of_the_mod[] = "[Optional] Port number of the model server. ";
+static const char __pyx_k_Optional_Port_number_to_the_GUI[] = "[Optional] Port number to the GUI interface. ";
+static const char __pyx_k_Optional_Tag_to_recognize_the_p[] = "[Optional] Tag to recognize the process. ";
+static const char __pyx_k_Model_name_in_the_TF_serving_sid[] = "Model name in the TF serving side. DEFAULT: high_way_detector";
+static const char __pyx_k_URL_to_the_TF_gRPC_service_addre[] = "URL to the TF gRPC service address. DEFAULT: localhost:8500";
+static PyObject *__pyx_n_s_ArgumentParser;
+static PyObject *__pyx_kp_s_CNumber;
+static PyObject *__pyx_n_s_FLAGS;
 static PyObject *__pyx_kp_s_In_file;
-static PyObject *__pyx_kp_s_In_hello;
-static PyObject *__pyx_kp_s_In_myname;
-static PyObject *__pyx_kp_s_My_name_is;
+static PyObject *__pyx_kp_s_In_main;
+static PyObject *__pyx_kp_s_Input;
+static PyObject *__pyx_kp_s_Input_video_DEFAULT_test_mp4;
+static PyObject *__pyx_kp_s_LView;
+static PyObject *__pyx_kp_s_Mhost;
+static PyObject *__pyx_kp_s_Model_name_in_the_TF_serving_sid;
+static PyObject *__pyx_kp_s_Mport;
+static PyObject *__pyx_kp_s_Optional_Camera_ID_set_by_GUI;
+static PyObject *__pyx_kp_s_Optional_Folder_to_save_the_rec;
+static PyObject *__pyx_kp_s_Optional_Host_of_the_model_serv;
+static PyObject *__pyx_kp_s_Optional_If_shows_result_to_loc;
+static PyObject *__pyx_kp_s_Optional_Log_level_WARNING_is_d;
+static PyObject *__pyx_kp_s_Optional_Log_the_fps_informatio;
+static PyObject *__pyx_kp_s_Optional_Output_video;
+static PyObject *__pyx_kp_s_Optional_Port_number_of_the_mod;
+static PyObject *__pyx_kp_s_Optional_Port_number_to_the_GUI;
+static PyObject *__pyx_kp_s_Optional_Tag_to_recognize_the_p;
+static PyObject *__pyx_kp_s_Output;
+static PyObject *__pyx_kp_s_Port;
+static PyObject *__pyx_kp_s_Rpath;
+static PyObject *__pyx_kp_s_See_usage_with_help;
+static PyObject *__pyx_kp_s_Summary;
+static PyObject *__pyx_kp_s_URL_to_the_TF_gRPC_service_addre;
+static PyObject *__pyx_kp_s__5;
+static PyObject *__pyx_n_s_action;
+static PyObject *__pyx_n_s_add_argument;
+static PyObject *__pyx_n_s_argparse;
 static PyObject *__pyx_n_s_argv;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_dhan;
+static PyObject *__pyx_kp_s_cnumber;
+static PyObject *__pyx_n_s_cnumber_2;
+static PyObject *__pyx_n_s_default;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_file;
-static PyObject *__pyx_n_s_format;
-static PyObject *__pyx_n_s_hello;
-static PyObject *__pyx_kp_s_hello_Python_so;
-static PyObject *__pyx_kp_s_hello_py;
+static PyObject *__pyx_n_s_help;
+static PyObject *__pyx_n_s_high_way_detector;
+static PyObject *__pyx_kp_s_i;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_kp_s_input;
+static PyObject *__pyx_n_s_input_2;
+static PyObject *__pyx_kp_s_l;
+static PyObject *__pyx_kp_s_localhost_8500;
+static PyObject *__pyx_kp_s_localview;
+static PyObject *__pyx_n_s_localview_2;
+static PyObject *__pyx_kp_s_loglevel;
+static PyObject *__pyx_kp_s_lv;
+static PyObject *__pyx_kp_s_m;
 static PyObject *__pyx_n_s_main;
-static PyObject *__pyx_n_s_myname;
+static PyObject *__pyx_n_s_main_2;
+static PyObject *__pyx_n_s_main_args;
+static PyObject *__pyx_kp_s_main_args_py;
+static PyObject *__pyx_kp_s_mh;
+static PyObject *__pyx_kp_s_model;
+static PyObject *__pyx_kp_s_modelhost;
+static PyObject *__pyx_n_s_modelhost_2;
+static PyObject *__pyx_kp_s_modelport;
+static PyObject *__pyx_n_s_modelport_2;
+static PyObject *__pyx_kp_s_mp;
+static PyObject *__pyx_kp_s_n;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_name_2;
+static PyObject *__pyx_kp_s_o;
+static PyObject *__pyx_kp_s_output;
+static PyObject *__pyx_n_s_output_2;
+static PyObject *__pyx_kp_s_p;
+static PyObject *__pyx_n_s_parse_args;
+static PyObject *__pyx_n_s_parser;
+static PyObject *__pyx_kp_s_port;
+static PyObject *__pyx_n_s_port_2;
 static PyObject *__pyx_n_s_print;
+static PyObject *__pyx_kp_s_r;
+static PyObject *__pyx_kp_s_recordpath;
+static PyObject *__pyx_n_s_recordpath_2;
+static PyObject *__pyx_kp_s_s;
+static PyObject *__pyx_n_s_store_true;
+static PyObject *__pyx_kp_s_summary;
+static PyObject *__pyx_n_s_summary_2;
 static PyObject *__pyx_n_s_sys;
+static PyObject *__pyx_kp_s_t;
+static PyObject *__pyx_kp_s_tag;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_5hello_hello(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_5hello_2myname(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name); /* proto */
-static PyObject *__pyx_codeobj_;
+static PyObject *__pyx_kp_s_test_mp4;
+static PyObject *__pyx_n_s_type;
+static PyObject *__pyx_kp_s_u;
+static PyObject *__pyx_kp_s_url;
+static PyObject *__pyx_n_s_warning;
+static PyObject *__pyx_pf_9main_args_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
+static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
-static PyObject *__pyx_codeobj__3;
+static PyObject *__pyx_tuple__6;
+static PyObject *__pyx_tuple__7;
+static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__9;
+static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__12;
+static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__14;
+static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_codeobj__16;
 /* Late includes */
 
-/* "hello.py":3
- * import sys
+/* "main_args.py":4
+ * import argparse
  * 
- * def hello():             # <<<<<<<<<<<<<<
- *     print('In hello: ', *sys.argv)
- *     print('hello! Python so.')
+ * def main():             # <<<<<<<<<<<<<<
+ *     global logger_manager
+ *     global logger
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5hello_1hello(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_5hello_1hello = {"hello", (PyCFunction)__pyx_pw_5hello_1hello, METH_NOARGS, 0};
-static PyObject *__pyx_pw_5hello_1hello(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_9main_args_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_9main_args_1main = {"main", (PyCFunction)__pyx_pw_9main_args_1main, METH_NOARGS, 0};
+static PyObject *__pyx_pw_9main_args_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("hello (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_hello(__pyx_self);
+  __Pyx_RefNannySetupContext("main (wrapper)", 0);
+  __pyx_r = __pyx_pf_9main_args_main(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5hello_hello(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_9main_args_main(CYTHON_UNUSED PyObject *__pyx_self) {
+  PyObject *__pyx_v_parser = NULL;
+  PyObject *__pyx_v_FLAGS = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  __Pyx_RefNannySetupContext("hello", 0);
+  int __pyx_t_4;
+  int __pyx_t_5;
+  __Pyx_RefNannySetupContext("main", 0);
 
-  /* "hello.py":4
+  /* "main_args.py":10
+ *     global colors
  * 
- * def hello():
- *     print('In hello: ', *sys.argv)             # <<<<<<<<<<<<<<
- *     print('hello! Python so.')
+ *     print('In main: ', *sys.argv)             # <<<<<<<<<<<<<<
  * 
+ *     parser = argparse.ArgumentParser()
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_kp_s_In_hello);
-  __Pyx_GIVEREF(__pyx_kp_s_In_hello);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_In_hello);
+  __Pyx_INCREF(__pyx_kp_s_In_main);
+  __Pyx_GIVEREF(__pyx_kp_s_In_main);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_In_main);
   __pyx_t_1 = __pyx_t_2;
   __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyList_Extend(__pyx_t_1, __pyx_t_3) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (__Pyx_PyList_Extend(__pyx_t_1, __pyx_t_3) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   {
     PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1);
-    __pyx_t_1 = __pyx_temp; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+    __pyx_t_1 = __pyx_temp; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.py":5
- * def hello():
- *     print('In hello: ', *sys.argv)
- *     print('hello! Python so.')             # <<<<<<<<<<<<<<
+  /* "main_args.py":12
+ *     print('In main: ', *sys.argv)
  * 
- * def myname(name):
+ *     parser = argparse.ArgumentParser()             # <<<<<<<<<<<<<<
+ * 
+ *     parser.add_argument('-m', '--model', type = str, default = 'high_way_detector',
  */
-  if (__Pyx_PrintOne(0, __pyx_kp_s_hello_Python_so) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-
-  /* "hello.py":3
- * import sys
- * 
- * def hello():             # <<<<<<<<<<<<<<
- *     print('In hello: ', *sys.argv)
- *     print('hello! Python so.')
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("hello.hello", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "hello.py":7
- *     print('hello! Python so.')
- * 
- * def myname(name):             # <<<<<<<<<<<<<<
- *     print('In myname: ', *sys.argv)
- *     print('My name is: {}.'.format(name))
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_5hello_3myname(PyObject *__pyx_self, PyObject *__pyx_v_name); /*proto*/
-static PyMethodDef __pyx_mdef_5hello_3myname = {"myname", (PyCFunction)__pyx_pw_5hello_3myname, METH_O, 0};
-static PyObject *__pyx_pw_5hello_3myname(PyObject *__pyx_self, PyObject *__pyx_v_name) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("myname (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_2myname(__pyx_self, ((PyObject *)__pyx_v_name));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_5hello_2myname(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_RefNannySetupContext("myname", 0);
-
-  /* "hello.py":8
- * 
- * def myname(name):
- *     print('In myname: ', *sys.argv)             # <<<<<<<<<<<<<<
- *     print('My name is: {}.'.format(name))
- * 
- */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_argparse); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ArgumentParser); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_kp_s_In_myname);
-  __Pyx_GIVEREF(__pyx_kp_s_In_myname);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_In_myname);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_parser = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "main_args.py":14
+ *     parser = argparse.ArgumentParser()
+ * 
+ *     parser.add_argument('-m', '--model', type = str, default = 'high_way_detector',             # <<<<<<<<<<<<<<
+ *                         help = 'Model name in the TF serving side. DEFAULT: high_way_detector')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_n_s_high_way_detector) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Model_name_in_the_TF_serving_sid) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":17
+ *                         help = 'Model name in the TF serving side. DEFAULT: high_way_detector')
+ * 
+ *     parser.add_argument('-u', '--url', type = str, default = 'localhost:8500',             # <<<<<<<<<<<<<<
+ *                         help = 'URL to the TF gRPC service address. DEFAULT: localhost:8500')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s_localhost_8500) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_URL_to_the_TF_gRPC_service_addre) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__2, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":20
+ *                         help = 'URL to the TF gRPC service address. DEFAULT: localhost:8500')
+ * 
+ *     parser.add_argument('-i', '--input', type = str, default = 'test.mp4',             # <<<<<<<<<<<<<<
+ *                         help = 'Input video. DEFAULT: test.mp4 ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s_test_mp4) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Input_video_DEFAULT_test_mp4) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":23
+ *                         help = 'Input video. DEFAULT: test.mp4 ')
+ * 
+ *     parser.add_argument('-o', '--output', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Output video. ')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Output_video) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":26
+ *                         help = '[Optional] Output video. ')
+ * 
+ *     parser.add_argument('-l', '--loglevel', type = str, default = 'warning',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Log level. WARNING is default. ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_n_s_warning) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Log_level_WARNING_is_d) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":29
+ *                         help = '[Optional] Log level. WARNING is default. ')
+ * 
+ *     parser.add_argument('-s', '--summary', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Log the fps information. ')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Log_the_fps_informatio) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":32
+ *                         help = '[Optional] Log the fps information. ')
+ * 
+ *     parser.add_argument('-r', '--recordpath', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Folder to save the record of incident. ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Folder_to_save_the_rec) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":35
+ *                         help = '[Optional] Folder to save the record of incident. ')
+ * 
+ *     parser.add_argument('-mh', '--modelhost', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Host of the model server. ')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Host_of_the_model_serv) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__9, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":38
+ *                         help = '[Optional] Host of the model server. ')
+ * 
+ *     parser.add_argument('-mp', '--modelport', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Port number of the model server. ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Port_number_of_the_mod) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__10, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":41
+ *                         help = '[Optional] Port number of the model server. ')
+ * 
+ *     parser.add_argument('-lv', '--localview', default = False, action="store_true",             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] If shows result to local view. ')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, Py_False) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_action, __pyx_n_s_store_true) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_If_shows_result_to_loc) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__11, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":45
+ * 
+ *     # Following two lines added by Mingliang
+ *     parser.add_argument('-n', '--cnumber', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Camera ID (set by GUI). ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Camera_ID_set_by_GUI) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__12, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":48
+ *                         help = '[Optional] Camera ID (set by GUI). ')
+ * 
+ *     parser.add_argument('-p', '--port', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Port number to the GUI interface. ')
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Port_number_to_the_GUI) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__13, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "main_args.py":51
+ *                         help = '[Optional] Port number to the GUI interface. ')
+ * 
+ *     parser.add_argument('-t', '--tag', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Tag to recognize the process. ')
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_add_argument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_type, ((PyObject *)(&PyString_Type))) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_default, __pyx_kp_s__5) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_help, __pyx_kp_s_Optional_Tag_to_recognize_the_p) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__14, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "main_args.py":54
+ *                         help = '[Optional] Tag to recognize the process. ')
+ * 
+ *     FLAGS = parser.parse_args()             # <<<<<<<<<<<<<<
+ * 
+ *     #logger_manager = loggerManager.LoggerManager(log_level = FLAGS.loglevel)
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_parse_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyList_Extend(__pyx_t_1, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  {
-    PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_1);
-    __pyx_t_1 = __pyx_temp; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_FLAGS = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "hello.py":9
- * def myname(name):
- *     print('In myname: ', *sys.argv)
- *     print('My name is: {}.'.format(name))             # <<<<<<<<<<<<<<
+  /* "main_args.py":65
+ * 
+ * 
+ *     if 'input' in FLAGS:             # <<<<<<<<<<<<<<
+ *         print('Input:   ', FLAGS.input)
+ *         print('Output:  ', FLAGS.output)
+ */
+  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_input_2, __pyx_v_FLAGS, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_5 = (__pyx_t_4 != 0);
+  if (__pyx_t_5) {
+
+    /* "main_args.py":66
+ * 
+ *     if 'input' in FLAGS:
+ *         print('Input:   ', FLAGS.input)             # <<<<<<<<<<<<<<
+ *         print('Output:  ', FLAGS.output)
+ *         print('Summary: ', FLAGS.summary)
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_input_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_kp_s_Input);
+    __Pyx_GIVEREF(__pyx_kp_s_Input);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Input);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "main_args.py":67
+ *     if 'input' in FLAGS:
+ *         print('Input:   ', FLAGS.input)
+ *         print('Output:  ', FLAGS.output)             # <<<<<<<<<<<<<<
+ *         print('Summary: ', FLAGS.summary)
+ *         print('Port:    ', FLAGS.port)
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_output_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_kp_s_Output);
+    __Pyx_GIVEREF(__pyx_kp_s_Output);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_Output);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+    __pyx_t_2 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "main_args.py":68
+ *         print('Input:   ', FLAGS.input)
+ *         print('Output:  ', FLAGS.output)
+ *         print('Summary: ', FLAGS.summary)             # <<<<<<<<<<<<<<
+ *         print('Port:    ', FLAGS.port)
+ *         print('CNumber: ', FLAGS.cnumber)
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_summary_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_kp_s_Summary);
+    __Pyx_GIVEREF(__pyx_kp_s_Summary);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Summary);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 68, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "main_args.py":69
+ *         print('Output:  ', FLAGS.output)
+ *         print('Summary: ', FLAGS.summary)
+ *         print('Port:    ', FLAGS.port)             # <<<<<<<<<<<<<<
+ *         print('CNumber: ', FLAGS.cnumber)
+ *         print('Rpath:   ', FLAGS.recordpath)
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_port_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_kp_s_Port);
+    __Pyx_GIVEREF(__pyx_kp_s_Port);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_Port);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+    __pyx_t_2 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "main_args.py":70
+ *         print('Summary: ', FLAGS.summary)
+ *         print('Port:    ', FLAGS.port)
+ *         print('CNumber: ', FLAGS.cnumber)             # <<<<<<<<<<<<<<
+ *         print('Rpath:   ', FLAGS.recordpath)
+ *         print('Mhost:   ', FLAGS.modelhost)
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_cnumber_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_kp_s_CNumber);
+    __Pyx_GIVEREF(__pyx_kp_s_CNumber);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_CNumber);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "main_args.py":71
+ *         print('Port:    ', FLAGS.port)
+ *         print('CNumber: ', FLAGS.cnumber)
+ *         print('Rpath:   ', FLAGS.recordpath)             # <<<<<<<<<<<<<<
+ *         print('Mhost:   ', FLAGS.modelhost)
+ *         print('Mport:   ', FLAGS.modelport)
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_recordpath_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_kp_s_Rpath);
+    __Pyx_GIVEREF(__pyx_kp_s_Rpath);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_Rpath);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+    __pyx_t_2 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "main_args.py":72
+ *         print('CNumber: ', FLAGS.cnumber)
+ *         print('Rpath:   ', FLAGS.recordpath)
+ *         print('Mhost:   ', FLAGS.modelhost)             # <<<<<<<<<<<<<<
+ *         print('Mport:   ', FLAGS.modelport)
+ *         print('LView:   ', FLAGS.localview)
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_modelhost_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_kp_s_Mhost);
+    __Pyx_GIVEREF(__pyx_kp_s_Mhost);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Mhost);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "main_args.py":73
+ *         print('Rpath:   ', FLAGS.recordpath)
+ *         print('Mhost:   ', FLAGS.modelhost)
+ *         print('Mport:   ', FLAGS.modelport)             # <<<<<<<<<<<<<<
+ *         print('LView:   ', FLAGS.localview)
+ * 
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_modelport_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_kp_s_Mport);
+    __Pyx_GIVEREF(__pyx_kp_s_Mport);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_Mport);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+    __pyx_t_2 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "main_args.py":74
+ *         print('Mhost:   ', FLAGS.modelhost)
+ *         print('Mport:   ', FLAGS.modelport)
+ *         print('LView:   ', FLAGS.localview)             # <<<<<<<<<<<<<<
+ * 
+ *     else:
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_FLAGS, __pyx_n_s_localview_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_kp_s_LView);
+    __Pyx_GIVEREF(__pyx_kp_s_LView);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_LView);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
+    __pyx_t_3 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "main_args.py":65
+ * 
+ * 
+ *     if 'input' in FLAGS:             # <<<<<<<<<<<<<<
+ *         print('Input:   ', FLAGS.input)
+ *         print('Output:  ', FLAGS.output)
+ */
+    goto __pyx_L3;
+  }
+
+  /* "main_args.py":77
+ * 
+ *     else:
+ *         print("See usage with --help.")             # <<<<<<<<<<<<<<
  * 
  * if __name__ == '__main__':
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_My_name_is, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
+  /*else*/ {
+    if (__Pyx_PrintOne(0, __pyx_kp_s_See_usage_with_help) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_name) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_name);
-  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_L3:;
 
-  /* "hello.py":7
- *     print('hello! Python so.')
+  /* "main_args.py":4
+ * import argparse
  * 
- * def myname(name):             # <<<<<<<<<<<<<<
- *     print('In myname: ', *sys.argv)
- *     print('My name is: {}.'.format(name))
+ * def main():             # <<<<<<<<<<<<<<
+ *     global logger_manager
+ *     global logger
  */
 
   /* function exit code */
@@ -1419,9 +1983,11 @@ static PyObject *__pyx_pf_5hello_2myname(CYTHON_UNUSED PyObject *__pyx_self, PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("hello.myname", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main_args.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_parser);
+  __Pyx_XDECREF(__pyx_v_FLAGS);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -1434,17 +2000,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_hello(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_main_args(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_hello},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_main_args},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "hello",
+    "main_args",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -1473,27 +2039,95 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_n_s_ArgumentParser, __pyx_k_ArgumentParser, sizeof(__pyx_k_ArgumentParser), 0, 0, 1, 1},
+  {&__pyx_kp_s_CNumber, __pyx_k_CNumber, sizeof(__pyx_k_CNumber), 0, 0, 1, 0},
+  {&__pyx_n_s_FLAGS, __pyx_k_FLAGS, sizeof(__pyx_k_FLAGS), 0, 0, 1, 1},
   {&__pyx_kp_s_In_file, __pyx_k_In_file, sizeof(__pyx_k_In_file), 0, 0, 1, 0},
-  {&__pyx_kp_s_In_hello, __pyx_k_In_hello, sizeof(__pyx_k_In_hello), 0, 0, 1, 0},
-  {&__pyx_kp_s_In_myname, __pyx_k_In_myname, sizeof(__pyx_k_In_myname), 0, 0, 1, 0},
-  {&__pyx_kp_s_My_name_is, __pyx_k_My_name_is, sizeof(__pyx_k_My_name_is), 0, 0, 1, 0},
+  {&__pyx_kp_s_In_main, __pyx_k_In_main, sizeof(__pyx_k_In_main), 0, 0, 1, 0},
+  {&__pyx_kp_s_Input, __pyx_k_Input, sizeof(__pyx_k_Input), 0, 0, 1, 0},
+  {&__pyx_kp_s_Input_video_DEFAULT_test_mp4, __pyx_k_Input_video_DEFAULT_test_mp4, sizeof(__pyx_k_Input_video_DEFAULT_test_mp4), 0, 0, 1, 0},
+  {&__pyx_kp_s_LView, __pyx_k_LView, sizeof(__pyx_k_LView), 0, 0, 1, 0},
+  {&__pyx_kp_s_Mhost, __pyx_k_Mhost, sizeof(__pyx_k_Mhost), 0, 0, 1, 0},
+  {&__pyx_kp_s_Model_name_in_the_TF_serving_sid, __pyx_k_Model_name_in_the_TF_serving_sid, sizeof(__pyx_k_Model_name_in_the_TF_serving_sid), 0, 0, 1, 0},
+  {&__pyx_kp_s_Mport, __pyx_k_Mport, sizeof(__pyx_k_Mport), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Camera_ID_set_by_GUI, __pyx_k_Optional_Camera_ID_set_by_GUI, sizeof(__pyx_k_Optional_Camera_ID_set_by_GUI), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Folder_to_save_the_rec, __pyx_k_Optional_Folder_to_save_the_rec, sizeof(__pyx_k_Optional_Folder_to_save_the_rec), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Host_of_the_model_serv, __pyx_k_Optional_Host_of_the_model_serv, sizeof(__pyx_k_Optional_Host_of_the_model_serv), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_If_shows_result_to_loc, __pyx_k_Optional_If_shows_result_to_loc, sizeof(__pyx_k_Optional_If_shows_result_to_loc), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Log_level_WARNING_is_d, __pyx_k_Optional_Log_level_WARNING_is_d, sizeof(__pyx_k_Optional_Log_level_WARNING_is_d), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Log_the_fps_informatio, __pyx_k_Optional_Log_the_fps_informatio, sizeof(__pyx_k_Optional_Log_the_fps_informatio), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Output_video, __pyx_k_Optional_Output_video, sizeof(__pyx_k_Optional_Output_video), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Port_number_of_the_mod, __pyx_k_Optional_Port_number_of_the_mod, sizeof(__pyx_k_Optional_Port_number_of_the_mod), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Port_number_to_the_GUI, __pyx_k_Optional_Port_number_to_the_GUI, sizeof(__pyx_k_Optional_Port_number_to_the_GUI), 0, 0, 1, 0},
+  {&__pyx_kp_s_Optional_Tag_to_recognize_the_p, __pyx_k_Optional_Tag_to_recognize_the_p, sizeof(__pyx_k_Optional_Tag_to_recognize_the_p), 0, 0, 1, 0},
+  {&__pyx_kp_s_Output, __pyx_k_Output, sizeof(__pyx_k_Output), 0, 0, 1, 0},
+  {&__pyx_kp_s_Port, __pyx_k_Port, sizeof(__pyx_k_Port), 0, 0, 1, 0},
+  {&__pyx_kp_s_Rpath, __pyx_k_Rpath, sizeof(__pyx_k_Rpath), 0, 0, 1, 0},
+  {&__pyx_kp_s_See_usage_with_help, __pyx_k_See_usage_with_help, sizeof(__pyx_k_See_usage_with_help), 0, 0, 1, 0},
+  {&__pyx_kp_s_Summary, __pyx_k_Summary, sizeof(__pyx_k_Summary), 0, 0, 1, 0},
+  {&__pyx_kp_s_URL_to_the_TF_gRPC_service_addre, __pyx_k_URL_to_the_TF_gRPC_service_addre, sizeof(__pyx_k_URL_to_the_TF_gRPC_service_addre), 0, 0, 1, 0},
+  {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
+  {&__pyx_n_s_action, __pyx_k_action, sizeof(__pyx_k_action), 0, 0, 1, 1},
+  {&__pyx_n_s_add_argument, __pyx_k_add_argument, sizeof(__pyx_k_add_argument), 0, 0, 1, 1},
+  {&__pyx_n_s_argparse, __pyx_k_argparse, sizeof(__pyx_k_argparse), 0, 0, 1, 1},
   {&__pyx_n_s_argv, __pyx_k_argv, sizeof(__pyx_k_argv), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_dhan, __pyx_k_dhan, sizeof(__pyx_k_dhan), 0, 0, 1, 1},
+  {&__pyx_kp_s_cnumber, __pyx_k_cnumber, sizeof(__pyx_k_cnumber), 0, 0, 1, 0},
+  {&__pyx_n_s_cnumber_2, __pyx_k_cnumber_2, sizeof(__pyx_k_cnumber_2), 0, 0, 1, 1},
+  {&__pyx_n_s_default, __pyx_k_default, sizeof(__pyx_k_default), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
-  {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
-  {&__pyx_n_s_hello, __pyx_k_hello, sizeof(__pyx_k_hello), 0, 0, 1, 1},
-  {&__pyx_kp_s_hello_Python_so, __pyx_k_hello_Python_so, sizeof(__pyx_k_hello_Python_so), 0, 0, 1, 0},
-  {&__pyx_kp_s_hello_py, __pyx_k_hello_py, sizeof(__pyx_k_hello_py), 0, 0, 1, 0},
+  {&__pyx_n_s_help, __pyx_k_help, sizeof(__pyx_k_help), 0, 0, 1, 1},
+  {&__pyx_n_s_high_way_detector, __pyx_k_high_way_detector, sizeof(__pyx_k_high_way_detector), 0, 0, 1, 1},
+  {&__pyx_kp_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_kp_s_input, __pyx_k_input, sizeof(__pyx_k_input), 0, 0, 1, 0},
+  {&__pyx_n_s_input_2, __pyx_k_input_2, sizeof(__pyx_k_input_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_l, __pyx_k_l, sizeof(__pyx_k_l), 0, 0, 1, 0},
+  {&__pyx_kp_s_localhost_8500, __pyx_k_localhost_8500, sizeof(__pyx_k_localhost_8500), 0, 0, 1, 0},
+  {&__pyx_kp_s_localview, __pyx_k_localview, sizeof(__pyx_k_localview), 0, 0, 1, 0},
+  {&__pyx_n_s_localview_2, __pyx_k_localview_2, sizeof(__pyx_k_localview_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_loglevel, __pyx_k_loglevel, sizeof(__pyx_k_loglevel), 0, 0, 1, 0},
+  {&__pyx_kp_s_lv, __pyx_k_lv, sizeof(__pyx_k_lv), 0, 0, 1, 0},
+  {&__pyx_kp_s_m, __pyx_k_m, sizeof(__pyx_k_m), 0, 0, 1, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {&__pyx_n_s_myname, __pyx_k_myname, sizeof(__pyx_k_myname), 0, 0, 1, 1},
+  {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
+  {&__pyx_n_s_main_args, __pyx_k_main_args, sizeof(__pyx_k_main_args), 0, 0, 1, 1},
+  {&__pyx_kp_s_main_args_py, __pyx_k_main_args_py, sizeof(__pyx_k_main_args_py), 0, 0, 1, 0},
+  {&__pyx_kp_s_mh, __pyx_k_mh, sizeof(__pyx_k_mh), 0, 0, 1, 0},
+  {&__pyx_kp_s_model, __pyx_k_model, sizeof(__pyx_k_model), 0, 0, 1, 0},
+  {&__pyx_kp_s_modelhost, __pyx_k_modelhost, sizeof(__pyx_k_modelhost), 0, 0, 1, 0},
+  {&__pyx_n_s_modelhost_2, __pyx_k_modelhost_2, sizeof(__pyx_k_modelhost_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_modelport, __pyx_k_modelport, sizeof(__pyx_k_modelport), 0, 0, 1, 0},
+  {&__pyx_n_s_modelport_2, __pyx_k_modelport_2, sizeof(__pyx_k_modelport_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_mp, __pyx_k_mp, sizeof(__pyx_k_mp), 0, 0, 1, 0},
+  {&__pyx_kp_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 0},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_o, __pyx_k_o, sizeof(__pyx_k_o), 0, 0, 1, 0},
+  {&__pyx_kp_s_output, __pyx_k_output, sizeof(__pyx_k_output), 0, 0, 1, 0},
+  {&__pyx_n_s_output_2, __pyx_k_output_2, sizeof(__pyx_k_output_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 0, 1, 0},
+  {&__pyx_n_s_parse_args, __pyx_k_parse_args, sizeof(__pyx_k_parse_args), 0, 0, 1, 1},
+  {&__pyx_n_s_parser, __pyx_k_parser, sizeof(__pyx_k_parser), 0, 0, 1, 1},
+  {&__pyx_kp_s_port, __pyx_k_port, sizeof(__pyx_k_port), 0, 0, 1, 0},
+  {&__pyx_n_s_port_2, __pyx_k_port_2, sizeof(__pyx_k_port_2), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
+  {&__pyx_kp_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 0},
+  {&__pyx_kp_s_recordpath, __pyx_k_recordpath, sizeof(__pyx_k_recordpath), 0, 0, 1, 0},
+  {&__pyx_n_s_recordpath_2, __pyx_k_recordpath_2, sizeof(__pyx_k_recordpath_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 0},
+  {&__pyx_n_s_store_true, __pyx_k_store_true, sizeof(__pyx_k_store_true), 0, 0, 1, 1},
+  {&__pyx_kp_s_summary, __pyx_k_summary, sizeof(__pyx_k_summary), 0, 0, 1, 0},
+  {&__pyx_n_s_summary_2, __pyx_k_summary_2, sizeof(__pyx_k_summary_2), 0, 0, 1, 1},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
+  {&__pyx_kp_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 0},
+  {&__pyx_kp_s_tag, __pyx_k_tag, sizeof(__pyx_k_tag), 0, 0, 1, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_kp_s_test_mp4, __pyx_k_test_mp4, sizeof(__pyx_k_test_mp4), 0, 0, 1, 0},
+  {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
+  {&__pyx_kp_s_u, __pyx_k_u, sizeof(__pyx_k_u), 0, 0, 1, 0},
+  {&__pyx_kp_s_url, __pyx_k_url, sizeof(__pyx_k_url), 0, 0, 1, 0},
+  {&__pyx_n_s_warning, __pyx_k_warning, sizeof(__pyx_k_warning), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -1504,36 +2138,160 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "hello.py":3
- * import sys
+  /* "main_args.py":14
+ *     parser = argparse.ArgumentParser()
  * 
- * def hello():             # <<<<<<<<<<<<<<
- *     print('In hello: ', *sys.argv)
- *     print('hello! Python so.')
+ *     parser.add_argument('-m', '--model', type = str, default = 'high_way_detector',             # <<<<<<<<<<<<<<
+ *                         help = 'Model name in the TF serving side. DEFAULT: high_way_detector')
+ * 
  */
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_hello_py, __pyx_n_s_hello, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_kp_s_m, __pyx_kp_s_model); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "hello.py":7
- *     print('hello! Python so.')
+  /* "main_args.py":17
+ *                         help = 'Model name in the TF serving side. DEFAULT: high_way_detector')
  * 
- * def myname(name):             # <<<<<<<<<<<<<<
- *     print('In myname: ', *sys.argv)
- *     print('My name is: {}.'.format(name))
+ *     parser.add_argument('-u', '--url', type = str, default = 'localhost:8500',             # <<<<<<<<<<<<<<
+ *                         help = 'URL to the TF gRPC service address. DEFAULT: localhost:8500')
+ * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_name_2); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_kp_s_u, __pyx_kp_s_url); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_hello_py, __pyx_n_s_myname, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 7, __pyx_L1_error)
 
-  /* "hello.py":14
- *     print('In file: ', *sys.argv)
- *     hello()
- *     myname('dhan')             # <<<<<<<<<<<<<<
+  /* "main_args.py":20
+ *                         help = 'URL to the TF gRPC service address. DEFAULT: localhost:8500')
+ * 
+ *     parser.add_argument('-i', '--input', type = str, default = 'test.mp4',             # <<<<<<<<<<<<<<
+ *                         help = 'Input video. DEFAULT: test.mp4 ')
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_n_s_dhan); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_kp_s_i, __pyx_kp_s_input); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+
+  /* "main_args.py":23
+ *                         help = 'Input video. DEFAULT: test.mp4 ')
+ * 
+ *     parser.add_argument('-o', '--output', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Output video. ')
+ * 
+ */
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_kp_s_o, __pyx_kp_s_output); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
+
+  /* "main_args.py":26
+ *                         help = '[Optional] Output video. ')
+ * 
+ *     parser.add_argument('-l', '--loglevel', type = str, default = 'warning',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Log level. WARNING is default. ')
+ * 
+ */
+  __pyx_tuple__6 = PyTuple_Pack(2, __pyx_kp_s_l, __pyx_kp_s_loglevel); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+
+  /* "main_args.py":29
+ *                         help = '[Optional] Log level. WARNING is default. ')
+ * 
+ *     parser.add_argument('-s', '--summary', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Log the fps information. ')
+ * 
+ */
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_kp_s_s, __pyx_kp_s_summary); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+
+  /* "main_args.py":32
+ *                         help = '[Optional] Log the fps information. ')
+ * 
+ *     parser.add_argument('-r', '--recordpath', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Folder to save the record of incident. ')
+ * 
+ */
+  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_kp_s_r, __pyx_kp_s_recordpath); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+
+  /* "main_args.py":35
+ *                         help = '[Optional] Folder to save the record of incident. ')
+ * 
+ *     parser.add_argument('-mh', '--modelhost', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Host of the model server. ')
+ * 
+ */
+  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_kp_s_mh, __pyx_kp_s_modelhost); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+
+  /* "main_args.py":38
+ *                         help = '[Optional] Host of the model server. ')
+ * 
+ *     parser.add_argument('-mp', '--modelport', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Port number of the model server. ')
+ * 
+ */
+  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_kp_s_mp, __pyx_kp_s_modelport); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+
+  /* "main_args.py":41
+ *                         help = '[Optional] Port number of the model server. ')
+ * 
+ *     parser.add_argument('-lv', '--localview', default = False, action="store_true",             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] If shows result to local view. ')
+ * 
+ */
+  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_kp_s_lv, __pyx_kp_s_localview); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+
+  /* "main_args.py":45
+ * 
+ *     # Following two lines added by Mingliang
+ *     parser.add_argument('-n', '--cnumber', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Camera ID (set by GUI). ')
+ * 
+ */
+  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_kp_s_n, __pyx_kp_s_cnumber); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+
+  /* "main_args.py":48
+ *                         help = '[Optional] Camera ID (set by GUI). ')
+ * 
+ *     parser.add_argument('-p', '--port', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Port number to the GUI interface. ')
+ * 
+ */
+  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_kp_s_p, __pyx_kp_s_port); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+
+  /* "main_args.py":51
+ *                         help = '[Optional] Port number to the GUI interface. ')
+ * 
+ *     parser.add_argument('-t', '--tag', type = str, default = '',             # <<<<<<<<<<<<<<
+ *                         help = '[Optional] Tag to recognize the process. ')
+ * 
+ */
+  __pyx_tuple__14 = PyTuple_Pack(2, __pyx_kp_s_t, __pyx_kp_s_tag); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+
+  /* "main_args.py":4
+ * import argparse
+ * 
+ * def main():             # <<<<<<<<<<<<<<
+ *     global logger_manager
+ *     global logger
+ */
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_parser, __pyx_n_s_FLAGS); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_main_args_py, __pyx_n_s_main_2, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1629,11 +2387,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC inithello(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC inithello(void)
+__Pyx_PyMODINIT_FUNC initmain_args(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initmain_args(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_hello(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_hello(void)
+__Pyx_PyMODINIT_FUNC PyInit_main_args(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_main_args(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -1698,7 +2456,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_main_args(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -1710,7 +2468,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_modul
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'hello' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'main_args' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -1725,7 +2483,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_hello(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_main_args(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -1764,7 +2522,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("hello", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("main_args", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -1783,14 +2541,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_hello) {
+  if (__pyx_module_is_main_main_args) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "hello")) {
-      if (unlikely(PyDict_SetItemString(modules, "hello", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "main_args")) {
+      if (unlikely(PyDict_SetItemString(modules, "main_args", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -1811,128 +2569,111 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "hello.py":1
+  /* "main_args.py":1
  * import sys             # <<<<<<<<<<<<<<
+ * import argparse
  * 
- * def hello():
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_sys, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.py":3
+  /* "main_args.py":2
  * import sys
+ * import argparse             # <<<<<<<<<<<<<<
  * 
- * def hello():             # <<<<<<<<<<<<<<
- *     print('In hello: ', *sys.argv)
- *     print('hello! Python so.')
+ * def main():
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_5hello_1hello, 0, __pyx_n_s_hello, NULL, __pyx_n_s_hello, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_argparse, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hello, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_argparse, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.py":7
- *     print('hello! Python so.')
+  /* "main_args.py":4
+ * import argparse
  * 
- * def myname(name):             # <<<<<<<<<<<<<<
- *     print('In myname: ', *sys.argv)
- *     print('My name is: {}.'.format(name))
+ * def main():             # <<<<<<<<<<<<<<
+ *     global logger_manager
+ *     global logger
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_5hello_3myname, 0, __pyx_n_s_myname, NULL, __pyx_n_s_hello, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9main_args_1main, 0, __pyx_n_s_main_2, NULL, __pyx_n_s_main_args, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_myname, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.py":11
- *     print('My name is: {}.'.format(name))
+  /* "main_args.py":79
+ *         print("See usage with --help.")
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
  *     print('In file: ', *sys.argv)
- *     hello()
+ *     main()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "hello.py":12
+    /* "main_args.py":80
  * 
  * if __name__ == '__main__':
  *     print('In file: ', *sys.argv)             # <<<<<<<<<<<<<<
- *     hello()
- *     myname('dhan')
+ *     main()
  */
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_kp_s_In_file);
     __Pyx_GIVEREF(__pyx_kp_s_In_file);
     PyList_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_In_file);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_argv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_argv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (__Pyx_PyList_Extend(__pyx_t_1, __pyx_t_4) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+    if (__Pyx_PyList_Extend(__pyx_t_1, __pyx_t_4) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     {
       PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1);
-      __pyx_t_1 = __pyx_temp; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+      __pyx_t_1 = __pyx_temp; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "hello.py":13
+    /* "main_args.py":81
  * if __name__ == '__main__':
  *     print('In file: ', *sys.argv)
- *     hello()             # <<<<<<<<<<<<<<
- *     myname('dhan')
- * 
+ *     main()             # <<<<<<<<<<<<<<
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_hello); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_main_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "hello.py":14
- *     print('In file: ', *sys.argv)
- *     hello()
- *     myname('dhan')             # <<<<<<<<<<<<<<
- * 
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_myname); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-    /* "hello.py":11
- *     print('My name is: {}.'.format(name))
+    /* "main_args.py":79
+ *         print("See usage with --help.")
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
  *     print('In file: ', *sys.argv)
- *     hello()
+ *     main()
  */
   }
 
-  /* "hello.py":1
+  /* "main_args.py":1
  * import sys             # <<<<<<<<<<<<<<
+ * import argparse
  * 
- * def hello():
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_4) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -1943,11 +2684,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_4);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init hello", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init main_args", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init hello");
+    PyErr_SetString(PyExc_ImportError, "init main_args");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2040,29 +2781,6 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
 #endif
     return __Pyx_GetBuiltinName(name);
 }
-
-/* PyCFunctionFastCall */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
-    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
-    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
-    PyObject *self = PyCFunction_GET_SELF(func);
-    int flags = PyCFunction_GET_FLAGS(func);
-    assert(PyCFunction_Check(func));
-    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
-    assert(nargs >= 0);
-    assert(nargs == 0 || args != NULL);
-    /* _PyCFunction_FastCallDict() must not be called with an exception set,
-       because it may clear it (directly or indirectly) and so the
-       caller loses its exception */
-    assert(!PyErr_Occurred());
-    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
-        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
-    } else {
-        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
-    }
-}
-#endif
 
 /* PyFunctionFastCall */
 #if CYTHON_FAST_PYCALL
@@ -2203,35 +2921,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 }
 #endif
 
-/* PyObjectCall2Args */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
-    PyObject *args, *result = NULL;
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyFunction_FastCall(function, args, 2);
-    }
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyCFunction_FastCall(function, args, 2);
-    }
-    #endif
-    args = PyTuple_New(2);
-    if (unlikely(!args)) goto done;
-    Py_INCREF(arg1);
-    PyTuple_SET_ITEM(args, 0, arg1);
-    Py_INCREF(arg2);
-    PyTuple_SET_ITEM(args, 1, arg2);
-    Py_INCREF(function);
-    result = __Pyx_PyObject_Call(function, args, NULL);
-    Py_DECREF(args);
-    Py_DECREF(function);
-done:
-    return result;
-}
-
 /* PyObjectCallMethO */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
@@ -2249,6 +2938,51 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
             "NULL result without error in PyObject_Call");
     }
     return result;
+}
+#endif
+
+/* PyObjectCallNoArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, NULL, 0);
+    }
+#endif
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
+#else
+    if (likely(PyCFunction_Check(func)))
+#endif
+    {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
+            return __Pyx_PyObject_CallMethO(func, NULL);
+        }
+    }
+    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
+}
+#endif
+
+/* PyCFunctionFastCall */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
+    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
+    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
+    PyObject *self = PyCFunction_GET_SELF(func);
+    int flags = PyCFunction_GET_FLAGS(func);
+    assert(PyCFunction_Check(func));
+    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
+    assert(nargs >= 0);
+    assert(nargs == 0 || args != NULL);
+    /* _PyCFunction_FastCallDict() must not be called with an exception set,
+       because it may clear it (directly or indirectly) and so the
+       caller loses its exception */
+    assert(!PyErr_Occurred());
+    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
+        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
+    } else {
+        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
+    }
 }
 #endif
 
@@ -3140,28 +3874,6 @@ return_ne:
     return (equals == Py_NE);
 #endif
 }
-
-/* PyObjectCallNoArg */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, NULL, 0);
-    }
-#endif
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
-#else
-    if (likely(PyCFunction_Check(func)))
-#endif
-    {
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
-            return __Pyx_PyObject_CallMethO(func, NULL);
-        }
-    }
-    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
-}
-#endif
 
 /* PyErrFetchRestore */
 #if CYTHON_FAST_THREAD_STATE
