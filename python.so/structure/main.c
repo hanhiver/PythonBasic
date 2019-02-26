@@ -11,6 +11,7 @@ int main()
 	test_c.my_mouse = test_m;
 
 	test();
+	read(&test_c);
 	job(test_c);
 
 	return 0;

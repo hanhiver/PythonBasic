@@ -15,9 +15,16 @@ typedef struct COMPUTER
 } computer;
 */
 
+int read(computer* comp)
+{
+	printf("read: right = %d, left = %d, my_screen = %d\n", comp->my_mouse.right, comp->my_mouse.left, comp->my_screen);
+	return 0;
+}
+
+
 int job(computer comp)
 {	
-	printf("right = %d, left = %d, my_screen = %d\n", comp.my_mouse.right, comp.my_mouse.left, comp.my_screen);
+	printf("job: right = %d, left = %d, my_screen = %d\n", comp.my_mouse.right, comp.my_mouse.left, comp.my_screen);
 	int res = (comp.my_mouse.right + comp.my_mouse.left) * comp.my_screen;
 	printf("I have a mouse: %d. \n", res);
 	return res;
