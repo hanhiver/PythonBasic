@@ -5,13 +5,13 @@ lib = ct.cdll.LoadLibrary(so_file)
 
 lib.test()
 
-class mouse(ct.Structure):
-    _fields_ = [('right', ctypes.c_int), ('left', ct.c_int)]
+class MOUSE(ct.Structure):
+    _fields_ = [('right', ct.c_int), ('left', ct.c_int)]
 
-class computer(ct.Structure):
-    _fields_ = [('my_screen', ct.c_int), ('my_mouse', mouse)]
+class COMPUTER(ct.Structure):
+    _fields_ = [('my_screen', ct.c_int), ('my_mouse', MOUSE)]
 
-comp = computer()
+comp = COMPUTER()
 comp.my_screen = 3
 comp.my_mouse.right = 2
 comp.my_mouse.left = 1
