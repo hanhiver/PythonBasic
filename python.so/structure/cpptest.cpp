@@ -63,5 +63,7 @@ extern "C"
         cout << endl;
         cout<<"输出子结构体指针中的int型：";
         cout<<struct_test_p->son_struct.test_int<<endl;
+
+		return 0;
     }
 }
