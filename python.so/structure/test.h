@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-typedef struct MOUSE
+struct MOUSE
 {
 	int right;
 	int left;
-} mouse;
+};
 
-typedef struct COMPUTER
+struct COMPUTER
 {
 	int my_screen;
-	mouse my_mouse;
-} computer;
+	struct MOUSE my_mouse;
+};
 
-int job(computer comp);
+int job(struct COMPUTER comp);
 
 int test();
 

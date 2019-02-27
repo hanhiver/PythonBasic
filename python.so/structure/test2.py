@@ -1,35 +1,22 @@
 import ctypes as ct 
 
-
 so_file = './libtest.so'
 lib = ct.cdll.LoadLibrary(so_file)
 
-print("1")
-
 lib.test()
 
-print("2")
-
-class MOUSE(ct.Structure):
+class mouse(ct.Structure):
     _fields_ = [('right', ct.c_int), ('left', ct.c_int)]
 
-print("3")
+class computer(ct.Structure):
+    _fields_ = [('my_screen', ct.c_int), ('my_mouse', mouse)]
 
-class COMPUTER(ct.Structure):
-    _fields_ = [('my_screen', ct.c_int), ('my_mouse', MOUSE)]
+test_computer = computer()
+test_computer.my_screen = 3
+test_computer.my_mouse.right = 2
+test_computer.my_mouse.left = 1
 
-print("4")
-
-comp = COMPUTER()
-comp.my_screen = 3
-comp.my_mouse.right = 2
-comp.my_mouse.left = 1
-
-print("5")
-
-res = lib.job(comp)
-
-print("6")
-
+res = lib.job(test_computer)
 print('Return value: {}.'.format(res))
+
 
