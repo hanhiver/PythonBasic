@@ -15,5 +15,5 @@ mystruct.test_int3 = 3
 mystruct.son_struct.test_int1 = 1
 mystruct.son_struct.test_int2 = 2
 
-#mylib.test_value(mystruct)
-mylib.test_pointer(ctypes.byref(mystruct))
+mylib.test_value(mystruct)
+#mylib.test_pointer(ctypes.byref(mystruct))

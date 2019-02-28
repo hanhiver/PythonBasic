@@ -20,6 +20,7 @@ test_computer.my_screen = 3
 test_computer.my_mouse.right = 2
 test_computer.my_mouse.left = 1
 
+res = lib.read(ct.byref(test_computer))
 res = lib.job(test_computer)
 print('Return value: {}.'.format(res))
 

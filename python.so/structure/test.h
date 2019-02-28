@@ -13,6 +13,6 @@ struct COMPUTER
 };
 
 int job(struct COMPUTER comp);
-
+int read(struct COMPUTER* comp);
 int test();
 
