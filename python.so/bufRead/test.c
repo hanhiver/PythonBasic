@@ -55,12 +55,14 @@ int matrix_write(void* buf, int strides[], int shapes[])
     int i, j, M, N, s0, s1;
     int* pos = (int*)buf;
 
+    printf("Input buf %p. \n", buf);
+
     M = shapes[0];
     N = shapes[1];
     s0 = strides[0] / sizeof(int);
     s1 = strides[1] / sizeof(int);
 
-    printf("Initialize the matrix: \n");
+    printf("Initialize the matrix: %p \n", buf);
 
     int init_value = 1; 
 
@@ -90,7 +92,7 @@ int matrix_add(void* buf, int strides[], int shapes[])
     s0 = strides[0] / sizeof(int);
     s1 = strides[1] / sizeof(int);
 
-    printf("Add all items in the matrix: \n");
+    printf("Add all items in the matrix: %p \n", buf);
 
     for (i=0; i<M; i++)
     {
@@ -104,6 +106,22 @@ int matrix_add(void* buf, int strides[], int shapes[])
     printf("Sum of the matrix is: %d. \n", sum);
 
     return 0; 
+}
+
+int create_matrix(void** buf, int size)
+{
+    printf("Create %d buf in create_matrix. \n", size);
+
+    *buf = (void*)malloc(size);
+    if (NULL == *buf)
+    {
+        printf("malloc failed! \n");
+        return -1;
+    }
+
+    printf("Create buf %p OK. \n", *buf);
+
+    return 0;
 }
 
 int main()
@@ -127,12 +145,18 @@ int main()
 
     printf("=== Matrix Test ===\n");
     void* buf2 = NULL;
+    printf("buf2 before: %p \n", buf2);
+    
+    /*
     buf2 = (void *)malloc(6 * sizeof(int));
     if (NULL == buf2)
     {
         printf("malloc failed! \n");
         return -1;
-    }
+    }*/
+
+    create_matrix(&buf2, 6*sizeof(int));
+    printf("buf2 after: %p \n", buf2);
 
     int strides[2]; 
     strides[0] = 3 * sizeof(int);

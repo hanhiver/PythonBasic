@@ -7,7 +7,7 @@ lib = ctypes.cdll.LoadLibrary(so_file)
 
 lib.testlib()
 
-print("=== String Test ===")
+print("\n=== String Test ===")
 
 buf = ctypes.create_string_buffer(20)
 ctypes.cast(buf, ctypes.c_void_p)
@@ -39,7 +39,7 @@ my_mwrite(matrix)
 print("After: ", repr(matrix))
 """
 
-print("=== Matrix Test ===")
+print("\n=== Matrix Test ===")
 
 mbuf = ctypes.create_string_buffer(ctypes.sizeof(ctypes.c_int) * 6)
 ctypes.cast(mbuf, ctypes.c_void_p)
@@ -60,6 +60,43 @@ pybuf = (ctypes.c_int * 6).from_buffer(mbuf)
 pydata = list(pybuf)
 print('PYDATA: ', pydata)
 
+npdata = np.array(pybuf, dtype = np.int32)
+print('NPDATA: {} \n shape: {}'.format(npdata, npdata.shape))
+npdata = npdata.reshape((2, 3))
+print('NPDATA: {} \n shape: {}'.format(npdata, npdata.shape))
+
+npdata_as = np.ctypeslib.as_array(pybuf)
+print('NPDATA_AS: {} \n shape: {}'.format(npdata_as, npdata_as.shape))
+npdata_as = npdata_as.reshape((2, 3))
+print('NPDATA_AS: {} \n shape: {}'.format(npdata_as, npdata_as.shape))
+
+
+
+print("\n=== C buffer Test ===")
+cbuf = ctypes.c_void_p()
+lib.create_matrix(ctypes.byref(cbuf), 6 * ctypes.sizeof(ctypes.c_int))
+
+lib.matrix_write(cbuf, strides, shapes)
+lib.matrix_add(cbuf, ctypes.byref(strides), ctypes.byref(shapes))
+
+cbuf2 = ctypes.cast(cbuf, ctypes.POINTER(ctypes.c_int))
+npdata_as = np.ctypeslib.as_array(cbuf2, shape = (6, ))
+print('NPDATA_AS: {} \n shape: {}'.format(npdata_as, npdata_as.shape))
+npdata_as = npdata_as.reshape((2, 3))
+print('NPDATA_AS: {} \n shape: {}'.format(npdata_as, npdata_as.shape))
+
+
+"""
+cbuf2 = ctypes.cast(cbuf, ctypes.POINTER(ctypes.c_int))
+pycbuf = (ctypes.c_int).from_buffer_copy(cbuf2)
+pycdata = list(pycbuf)
+print('PYCDATA: ', pycdata)
+
+npcdata = np.array(pycbuf, dtype = np.int32)
+print('NPCDATA: {} \n shape: {}'.format(npdata, npdata.shape))
+npcdata = npcdata.reshape((2, 3))
+print('NPCDATA: {} \n shape: {}'.format(npdata, npdata.shape))
+"""
 
 
 #ctypes.cast(mbuf, ctypes.POINTER(ctypes.c_int))
