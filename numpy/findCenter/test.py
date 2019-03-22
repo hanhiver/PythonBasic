@@ -34,6 +34,26 @@ def getCenterPoint(inputArray):
 
 	return (begin, value)  
 
+def lineSegment(inputArray, min_sep = 0):
+	ret = []
+	segment = []
+
+	for item in inputArray:
+		if item <= min_sep:
+			if segment:
+				ret.append(segment)
+				segment = []
+			continue
+		else:
+			segment.append(item)
+
+	if segment:
+		ret.append(segment)
+
+	np.array(ret)
+	return ret
+
+
 def main():
 	#a = [1]
 	a = [6, 13,	34,	31,	54,	134, 165, 238, 
@@ -44,8 +64,14 @@ def main():
 	a = np.array(a)
 	print(a)
 
-	pos, value = getCenterPoint(a)
-	print("Find center of the vect, pos: {}, value: {}. ".format(pos, value))
+	#pos, value = getCenterPoint(a)
+	#print("Find center of the vect, pos: {}, value: {}. ".format(pos, value))
+
+	res = lineSegment(a)
+	print("After line segmentation: ")
+	print(res)
+
+
 
 
 if __name__ == '__main__':
