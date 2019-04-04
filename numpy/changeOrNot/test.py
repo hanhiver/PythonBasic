@@ -47,7 +47,7 @@ def KeepMindTest(size = 1000):
 	test_result = []
 
 	for item in test_array:
-		result = change_mind_pick(item)
+		result = keep_mind_pick(item)
 		test_result.append(result)
 
 	result = np.mean(test_result)
