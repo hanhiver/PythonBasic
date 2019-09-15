@@ -2,7 +2,7 @@ import datetime
 
 class Bucket(object):
 	def __init__(self, period):
-		self.period_delta = timedelta(seconds = period)
+		self.period_delta = datetime.timedelta(seconds = period)
 		self.reset_time = datetime.now()
 		self.quota = 0
 
