@@ -1,5 +1,5 @@
 # python 3.4 的解决方案。
-# asyncio.coroutine将会在3.8之后废除。
+# asyncio.coroutine将会在3.10之后废除。
 import asyncio 
 
 @asyncio.coroutine
