@@ -1,0 +1,9 @@
+syntax = "proto3";
+package ImagePredict;
+service DnetPredict {
+  rpc dnet_detect(Data) returns (Data){}
+}
+message Data {
+  string text = 1;
+}
+
