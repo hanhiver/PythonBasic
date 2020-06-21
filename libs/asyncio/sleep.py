@@ -4,7 +4,7 @@ import datetime
 
 async def display_date():
     loop = asyncio.get_running_loop()
-    end_time = loop.time() + 5.0
+    end_time = loop.time() + 3.0
     while True: 
         print(datetime.datetime.now())
         if (loop.time() + 1.0) >= end_time:
