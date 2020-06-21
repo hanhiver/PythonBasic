@@ -13,7 +13,7 @@ Factory Method
 class ShapeFactory(object):
     '''Factory class'''
     def getShape(self):
-        return self.shape_name
+        return self.name
 
 class Circle(ShapeFactory):
     def __init__(self):
@@ -26,7 +26,7 @@ class Rectangle(ShapeFactory):
         self.name = 'Rectangle'
     def draw(self):
         print('Rectangle')
-        
+
 class ShapeInterfaceFactory(object):
     '''Interface base class'''
     def create(self):
