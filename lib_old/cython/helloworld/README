@@ -1,2 +1,0 @@
-Command to compile the cython program:
-	python setup.py build_ext --inplace. build_est

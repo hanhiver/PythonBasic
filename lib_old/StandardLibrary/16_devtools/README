@@ -1,7 +1,0 @@
-python -m doctest -v docktest_simple.py
-
-python -m unittest -v unittest_simple.py
-
-python -m trace --ignore-dir=/Users/dhan/anaconda3/envs --trace trace_example/main.py
-
-
