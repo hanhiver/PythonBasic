@@ -15,7 +15,7 @@ private_key = RSA.import_key(open('/tmp/private_key.pem').read())
 signature = pkcs1_15.new(private_key).sign(digest)
 
 # 添加错误
-signature = signature.replace(signature[2:5], signature[10:13])
+#signature = signature.replace(signature[2:5], signature[10:13])
 
 print("Signature: ", signature)
 

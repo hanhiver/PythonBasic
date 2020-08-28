@@ -15,7 +15,7 @@ cipher = PKCS1_OAEP.new(public_key)
 encrypted_data = cipher.encrypt(data)
 
 # 添加错误
-encrypted_data = encrypted_data.replace(encrypted_data[2:5], encrypted_data[10:13])
+#encrypted_data = encrypted_data.replace(encrypted_data[2:5], encrypted_data[10:13])
 
 # 输出加密后的内容
 print('公钥加密后的内容： ', encrypted_data)
