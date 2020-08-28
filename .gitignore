@@ -119,4 +119,4 @@ dmypy.json
 
 
 # Prevent upload key to github.
-.pem 
+*.pem 
