@@ -10,7 +10,7 @@ digest = SHA256.new(data)
 print("Digest: ", digest)
 
 # 读取私钥
-private_key = RSA.import_key(open('private_key.pem').read())
+private_key = RSA.import_key(open('/tmp/private_key.pem').read())
 # 对HASH值使用私钥进行签名。也就是用私钥对HASH值进行加密。
 signature = pkcs1_15.new(private_key).sign(digest)
 
@@ -24,7 +24,7 @@ print("Signature: ", signature)
 # 获取被签名的内容的HASH值。使用与签名部分一样的摘要算法计算
 digest = SHA256.new(data)
 # 读取公钥
-public_key = RSA.import_key(open('public_key.pem').read())
+public_key = RSA.import_key(open('/tmp/public_key.pem').read())
 
 # 进行签名校验。本质上就是使用公钥解密signature，看解密出来的值是否与digest相等
 # 相等则校验通过，说明确实data确实原先的内容；不等则校验不通过，data或signature被篡改

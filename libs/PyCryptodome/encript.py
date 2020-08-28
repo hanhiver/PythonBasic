@@ -6,7 +6,7 @@ data = b'Hello, PyCryptodome!'
 print('原始字符串内容： ', data)
 
 # 从文件中读取公钥
-public_key = RSA.import_key(open('public_key.pem').read())
+public_key = RSA.import_key(open('/tmp/public_key.pem').read())
 
 # 实例化加密套件
 cipher = PKCS1_OAEP.new(public_key)
@@ -21,7 +21,7 @@ encrypted_data = encrypted_data.replace(encrypted_data[2:5], encrypted_data[10:1
 print('公钥加密后的内容： ', encrypted_data)
 
 # 从文件中读取私钥
-private_key = RSA.import_key(open('private_key.pem').read())
+private_key = RSA.import_key(open('/tmp/private_key.pem').read())
 
 # 实例化加密套件
 cipher = PKCS1_OAEP.new(private_key)
