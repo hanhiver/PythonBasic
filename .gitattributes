@@ -2,5 +2,5 @@
 * text=auto
 
 # Prevent upload key to github.
-.pem 
+*.pem 
 
