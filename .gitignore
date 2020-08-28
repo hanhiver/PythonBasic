@@ -116,3 +116,7 @@ dmypy.json
 
 # Local History
 .history
+
+
+# Prevent upload key to github.
+.pem 
