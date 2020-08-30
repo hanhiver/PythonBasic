@@ -57,7 +57,7 @@ async def main():
 
         for new_url in urls:
             # Only follow the links beneath the base URL. 
-            if new_url.startwith(base_url):
+            if new_url.startswith(base_url):
                 await q.put(new_url)
     
     async def worker():
@@ -77,7 +77,7 @@ async def main():
     # Start workers, then wait for the work queue to be empty. 
     workers = gen.multi([worker() for _ in range(concurrency)])
     await q.join(timeout=timedelta(seconds=100))
-    #assert fetching == fetched
+    assert fetching == fetched
     print("Done in %d seconds, fetched %s URLs. " % (time.time() - start, len(fetched)))
 
     # Signal all the workers to exit. 
