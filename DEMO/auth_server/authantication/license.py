@@ -1,3 +1,13 @@
+"""
+基础的加密解密函数封装。
+提供如下功能调用：
+客户运行端：
+    1. 公钥加密信息。
+    2. 公钥验证服务器端私钥签名信息。 
+服务器端：
+    1. 私钥解密信息。
+    2. 私钥对传入信息进行签名。
+"""
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
@@ -18,7 +28,6 @@ class PublicCipher:
             self.verifier = pkcs1_15.new(self.key)
         except(ValueError, TypeError):
             print("导入公钥出错: %s" % public_key)
-        
 
     def encrypt_message(self, msg:bytes) -> (bytes, SHA256.SHA256Hash):
         """
