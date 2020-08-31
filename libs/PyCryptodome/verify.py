@@ -32,7 +32,7 @@ public_key = RSA.import_key(open('/tmp/public_key.pem').read())
 # 答案是不能，因为此时使用原先的公钥去解signature，其结果不会等于digest
 try:
     pkcs1_15.new(public_key).verify(digest, signature)
-    print("签名正确！")
+    print("签名正确！", result)
 except(ValueError, TypeError):
     print("签名错误！")
     
