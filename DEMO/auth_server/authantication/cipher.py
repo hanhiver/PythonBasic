@@ -21,6 +21,7 @@ class PublicCipher:
     def __init__(self, public_key:bytes):
         """
         根据提供的public_key初始化PublicCipher.
+        @param public_key: 客户公钥
         """
         try:
             self.key = RSA.import_key(public_key)
@@ -32,7 +33,8 @@ class PublicCipher:
     def encrypt_message(self, msg:bytes) -> (bytes, SHA256.SHA256Hash):
         """
         对提供的msg用公钥进行加密。
-        输出(加密后的信息，digest校验信息)
+        @param msg: 需要加密的信息。
+        @return: (加密后的信息，digest校验信息)
         """
         #msg_bytes = msg.encode(encoding="utf8")
         result = self.cipher.encrypt(msg)
@@ -42,7 +44,9 @@ class PublicCipher:
     def verify_signature(self, sig:bytes, digest:SHA256.SHA256Hash) -> bool:
         """
         给定私钥签名后的信息和digest校验信息，验证信息是否为私钥持有端发送。
-        如果校验成功，返回True，否则返回False. 
+        @param sig: 需要校验的签名
+        @param digest: 需要校验的哈希信息。
+        @returns: 如果校验成功，返回True，否则返回False. 
         """
         #sig_bytes = sig.encode(encoding="utf8")
         try:
@@ -60,6 +64,7 @@ class PrivateCipher:
     def __init__(self, private_key:bytes):
         """
         根据提供的private_key初始化PrivateCipher.
+        @param private_key: 私钥输入。
         """
         try:
             self.key = RSA.import_key(private_key)
@@ -71,11 +76,10 @@ class PrivateCipher:
     def decrypt_sign_message(self, msg:bytes) -> (bytes, bytes):
         """
         对收到的msg用私钥进行解密，同时用私钥对解密后的信息进行数字签名。
-        输出(解密后的信息，数字签名信息)
+        @param msg: 需要解密的信息。
+        @returns: (解密后的信息，数字签名信息)
         """
         signature = None
-        #msg_bytes = msg.encode(encoding="utf8")
-        #msg_bytes = bytes(msg, encoding="utf8")
         try:
             result = self.cipher.decrypt(msg)
         except(ValueError, TypeError):
@@ -84,8 +88,6 @@ class PrivateCipher:
 
         digest = SHA256.new(result)
         signature = self.signer.sign(digest)
-        #result = result.decode(encoding="utf8")
-        #signature = signature.decode(encoding="utf8")
         return (result, signature)
 
 

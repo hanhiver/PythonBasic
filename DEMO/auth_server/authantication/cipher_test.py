@@ -1,5 +1,6 @@
 import unittest
 import os
+import json
 import pickle
 
 from cipher import PublicCipher, PrivateCipher
@@ -51,10 +52,10 @@ class TestCipher(unittest.TestCase):
         d = {'time':'2020.08.31 15:30:01',
              'app_name':'miaoxiu', 
              'end_user':'yinglou1'}
-        message = pickle.dumps(d)
+        message = json.dumps(d).encode(encoding="utf8")
         encripted_msg, digest = self.public_cipher.encrypt_message(message)
         resumed_msg, signature = self.private_cipher.decrypt_sign_message(encripted_msg)
-        resumed_d = pickle.loads(resumed_msg)
+        resumed_d = json.loads(resumed_msg.decode(encoding="utf8"))
         self.assertEqual(d, resumed_d)
         self.assertEqual(True, self.public_cipher.verify_signature(signature, digest))
 

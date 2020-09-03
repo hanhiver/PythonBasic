@@ -12,7 +12,7 @@ class ServerLicense(object):
         self.vender_name = vender_name
         self.private_key = private_key
     
-    def read(self, filepath:str):
+    def read_from_file(self, filepath:str):
         pass 
 
 class ClientLicense(object):
@@ -22,11 +22,20 @@ class ClientLicense(object):
         self.vender_name = vender_name
         self.public_key = public_key
     
-    def read(self, filepath:str):
+    def read_from_file(self, filepath:str):
         pass 
 
 class License(object):
-    def __init__(self, app_name:str, vender_name:str):
+    def __init__(self):
+        self.app_name = ''
+        self.vender_name = ''
+
+    def gen_license(self, app_name:str, vender_name:str):
+        """
+        生成license。
+        @param app_name: license对应的app信息。
+        @param vender_name: license对应的供应商信息。
+        """
         self.license_id = uuid.uuid5(uuid.NAMESPACE_DNS, app_name + ":" + vender_name)
         self.key = RSA.generate(2048)
         # 获取私钥
