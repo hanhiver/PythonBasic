@@ -120,3 +120,6 @@ dmypy.json
 
 # Prevent upload key to github.
 *.pem 
+
+# Do not include vscode setting. 
+.vscode/
