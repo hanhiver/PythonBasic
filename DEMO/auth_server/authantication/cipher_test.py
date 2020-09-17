@@ -2,6 +2,7 @@ import unittest
 import os
 import json
 import pickle
+import argparse
 
 from cipher import PublicCipher, PrivateCipher
 
@@ -60,6 +61,21 @@ class TestCipher(unittest.TestCase):
         self.assertEqual(True, self.public_cipher.verify_signature(signature, digest))
 
 if __name__ == '__main__':
-    unittest.main()
+    # unittest.main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-r", " repeat", dest="repeat", help="repeat tests")
+
+    (args, unitargs) = parser.parse_known_args()
+    unitargs.insert(0, "placeholder") # unittest ignores first arg
+    # add more arguments to unitargs here
+    repeat = vars(args)["repeat"]
+    if repeat == None:
+        repeat = 1
+    else:
+        repeat = int(repeat)
+    for iteration in range(repeat):
+        wasSuccessful = unittest.main(exit=False, argv=unitargs).result.wasSuccessful()
+        if not wasSuccessful:
+            sys.exit(1)
 
     

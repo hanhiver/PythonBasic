@@ -123,3 +123,4 @@ dmypy.json
 
 # Do not include vscode setting. 
 .vscode/
+settings.json
