@@ -63,7 +63,7 @@ class TestCipher(unittest.TestCase):
 if __name__ == '__main__':
     # unittest.main()
     parser = argparse.ArgumentParser()
-    parser.add_argument("-r", " repeat", dest="repeat", help="repeat tests")
+    parser.add_argument("-r", "--repeat", dest="repeat", help="repeat tests")
 
     (args, unitargs) = parser.parse_known_args()
     unitargs.insert(0, "placeholder") # unittest ignores first arg
